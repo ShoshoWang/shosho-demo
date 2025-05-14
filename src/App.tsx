@@ -1,5 +1,5 @@
 import reactLogo from './assets/react.svg'
-import UserProfile from './usePro';
+import ChatBox from './chat';
 import './App.css'
 
 function App() {
@@ -7,11 +7,11 @@ function App() {
   return (
     <>
       <div>
-        <p>shosho的demo</p>
+        <p>shosho的chat bot</p>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        <UserProfile></UserProfile>
+        <ChatBox></ChatBox>
       </div>
     </>
   )
