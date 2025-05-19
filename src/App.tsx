@@ -18,16 +18,16 @@
 // }
 
 // export default App
-import React from "react";
-import CodeReview from "./CodeReview";
+// import { Routes, Route } from 'react-router-dom';
+import CodeReview from "./pages/CodeReview";
 
-const App: React.FC = () => {
+function App() {
   return (
     <div>
       <h1>My Code Review App</h1>
       <CodeReview />
     </div>
   );
-};
+}
 
 export default App;

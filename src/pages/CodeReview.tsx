@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { mastraClient } from "./mastraClient";
+import { mastraClient } from "../clients/mastraClient";
 
 // 定义响应类型（根据你的 Agent 输出结构）
 interface CodeReviewResponse {
