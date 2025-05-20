@@ -3,7 +3,7 @@
 // import './App.css'
 
 // function App() {
-  
+
 //   return (
 //     <>
 //       <div>
@@ -19,7 +19,7 @@
 
 // export default App
 // import { Routes, Route } from 'react-router-dom';
-import CodeReview from "./pages/CodeReview";
+import CodeReview from './pages/CodeReview';
 
 function App() {
   return (

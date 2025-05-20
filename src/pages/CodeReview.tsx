@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { mastraClient } from "../clients/mastraClient";
+import React, { useState } from 'react';
+import { mastraClient } from '../clients/mastraClient';
 
 // 定义响应类型（根据你的 Agent 输出结构）
 interface CodeReviewResponse {
@@ -8,8 +8,8 @@ interface CodeReviewResponse {
 }
 
 const CodeReview: React.FC = () => {
-  const [code, setCode] = useState<string>("");
-  const [language, setLanguage] = useState<string>("JavaScript");
+  const [code, setCode] = useState<string>('');
+  const [language, setLanguage] = useState<string>('JavaScript');
   const [review, setReview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -21,13 +21,12 @@ const CodeReview: React.FC = () => {
 
     try {
       // 获取 Code Review Agent
-      const agent = mastraClient.getAgent("codeReviewAgent");
+      const agent = mastraClient.getAgent('codeReviewAgent');
 
-     
       // 调用 Agent，构造 messages 数组
-    const response: CodeReviewResponse = await agent.generate({
-      messages: [`Review this ${language} code:\n${code}`], // 包装为数组
-    });
+      const response: CodeReviewResponse = await agent.generate({
+        messages: [`Review this ${language} code:\n${code}`], // 包装为数组
+      });
       // 设置审查结果
       if (response.error) {
         setError(response.error);
@@ -42,7 +41,7 @@ const CodeReview: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: '20px' }}>
       <h2>Code Review</h2>
 
       {/* 选择语言 */}
@@ -51,8 +50,8 @@ const CodeReview: React.FC = () => {
           Language:
           <select
             value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            style={{ marginLeft: "10px" }}
+            onChange={e => setLanguage(e.target.value)}
+            style={{ marginLeft: '10px' }}
           >
             <option value="JavaScript">JavaScript</option>
             <option value="TypeScript">TypeScript</option>
@@ -63,14 +62,14 @@ const CodeReview: React.FC = () => {
       </div>
 
       {/* 输入代码 */}
-      <div style={{ marginTop: "10px" }}>
+      <div style={{ marginTop: '10px' }}>
         <textarea
           rows={10}
           cols={50}
           value={code}
-          onChange={(e) => setCode(e.target.value)}
+          onChange={e => setCode(e.target.value)}
           placeholder="Paste your code here..."
-          style={{ width: "100%", fontFamily: "monospace" }}
+          style={{ width: '100%', fontFamily: 'monospace' }}
         />
       </div>
 
@@ -78,27 +77,23 @@ const CodeReview: React.FC = () => {
       <button
         onClick={handleReview}
         disabled={loading || !code.trim()}
-        style={{ marginTop: "10px" }}
+        style={{ marginTop: '10px' }}
       >
-        {loading ? "Reviewing..." : "Submit for Review"}
+        {loading ? 'Reviewing...' : 'Submit for Review'}
       </button>
 
       {/* 显示审查结果 */}
       {review && (
-        <div style={{ marginTop: "20px" }}>
+        <div style={{ marginTop: '20px' }}>
           <h3>Review Result:</h3>
-          <pre style={{ background: "#f5f5f5", padding: "10px", borderRadius: "5px" }}>
+          <pre style={{ background: '#f5f5f5', padding: '10px', borderRadius: '5px' }}>
             {review}
           </pre>
         </div>
       )}
 
       {/* 显示错误 */}
-      {error && (
-        <div style={{ marginTop: "10px", color: "red" }}>
-          {error}
-        </div>
-      )}
+      {error && <div style={{ marginTop: '10px', color: 'red' }}>{error}</div>}
     </div>
   );
 };
