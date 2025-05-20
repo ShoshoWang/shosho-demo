@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { mastraClient } from '../clients/mastraClient';
+import { Select, Button, Input, Card } from 'antd';
+const { TextArea } = Input;
 
 // 定义响应类型（根据你的 Agent 输出结构）
 interface CodeReviewResponse {
@@ -41,59 +43,54 @@ const CodeReview: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Code Review</h2>
-
+    <div className="p-5 mx-auto max-w-4xl">
+      <h1 className="mb-6 text-3xl font-bold">Code Review</h1>
       {/* 选择语言 */}
-      <div>
-        <label>
-          Language:
-          <select
-            value={language}
-            onChange={e => setLanguage(e.target.value)}
-            style={{ marginLeft: '10px' }}
-          >
-            <option value="JavaScript">JavaScript</option>
-            <option value="TypeScript">TypeScript</option>
-            <option value="Python">Python</option>
-            <option value="Java">Java</option>
-          </select>
-        </label>
+      <div className="mb-4">
+        <Select
+          className="w-48"
+          value={language}
+          onChange={value => setLanguage(value)}
+          options={[
+            { value: 'JavaScript', label: 'JavaScript' },
+            { value: 'TypeScript', label: 'TypeScript' },
+            { value: 'Python', label: 'Python' },
+            { value: 'Java', label: 'Java' },
+          ]}
+        />
       </div>
 
       {/* 输入代码 */}
-      <div style={{ marginTop: '10px' }}>
-        <textarea
+      <div className="mb-4">
+        <TextArea
           rows={10}
-          cols={50}
           value={code}
           onChange={e => setCode(e.target.value)}
           placeholder="Paste your code here..."
-          style={{ width: '100%', fontFamily: 'monospace' }}
+          className="font-mono"
         />
       </div>
 
       {/* 提交按钮 */}
-      <button
+      <Button
+        type="primary"
         onClick={handleReview}
-        disabled={loading || !code.trim()}
-        style={{ marginTop: '10px' }}
+        loading={loading}
+        disabled={!code.trim()}
+        className="mb-6"
       >
         {loading ? 'Reviewing...' : 'Submit for Review'}
-      </button>
+      </Button>
 
       {/* 显示审查结果 */}
       {review && (
-        <div style={{ marginTop: '20px' }}>
-          <h3>Review Result:</h3>
-          <pre style={{ background: '#f5f5f5', padding: '10px', borderRadius: '5px' }}>
-            {review}
-          </pre>
-        </div>
+        <Card title="Review Result" className="mt-6">
+          <pre className="p-4 whitespace-pre-wrap bg-gray-50 rounded">{review}</pre>
+        </Card>
       )}
 
       {/* 显示错误 */}
-      {error && <div style={{ marginTop: '10px', color: 'red' }}>{error}</div>}
+      {error && <div className="mt-4 text-red-500">{error}</div>}
     </div>
   );
 };

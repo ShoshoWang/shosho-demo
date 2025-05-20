@@ -24,7 +24,6 @@ import CodeReview from './pages/CodeReview';
 function App() {
   return (
     <div>
-      <h1>My Code Review App</h1>
       <CodeReview />
     </div>
   );
