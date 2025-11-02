@@ -1,5 +1,7 @@
 # Shosho Demo
 
+🌐 **官方网站**: [https://shoshowang.org/](https://shoshowang.org/)
+
 ## 项目介绍
 
 Shosho Demo 是一个基于 React 和 TypeScript 的 Web3 应用演示项目，集成了 AI 驱动的代码审查和智能问答功能。该项目使用 Vite 作为构建工具，提供了高效的开发体验和快速的热重载功能。

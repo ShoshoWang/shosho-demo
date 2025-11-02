@@ -19,12 +19,12 @@
 
 // export default App
 // import { Routes, Route } from 'react-router-dom';
-import CodeReview from './pages/CodeReview';
+import HomePage from './pages/index';
 
 function App() {
   return (
     <div>
-      <CodeReview />
+      <HomePage />
     </div>
   );
 }
